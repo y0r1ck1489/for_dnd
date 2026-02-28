@@ -6,7 +6,10 @@ import math
 #генерация 6 массивов с 4 случайными числами от 1 до 4
 """a =[randint(1,6) for i in range(4)]"""
 
-print('характеристики')
+rases = {}
+
+
+print('stats')
 stats = ['str','dex','const','int','wisd','char']
 character = dict.fromkeys(stats)
 for stat,data in character.items():
@@ -15,7 +18,7 @@ for stat,data in character.items():
         character[stat] = data
         print(stat + ': ' + str(data))
 
-print('\nМодификаторы')
+print('\nmod')
 modificator = dict.fromkeys(stats)
 for stat, mod in modificator.items():
         mod = math.floor((character[stat] - 10)/2)
