@@ -11,30 +11,17 @@ def show_stats_all():
         if characters is None or len(characters) == 0:
                 print('Список данных персонажей пуст')
         else:
-                print('список персонажей: ')
-                for idx, stats in enumerate(characters, 1):
-                        print('\nперсонаж ' + str(idx))
-                        print('='*30 + 'Stats' + '=' *35)
-                        print(character)
-                        print('='*68)
-                        print('='*10 + 'mods' + '=' *10)
-                        for stat, value in stats.items():
-                                mod = math.floor((value - 10)/2)
-                                if mod >=  0:
-                                        mod = '+' + str(mod)
-                                        print(stat + ': ' + str(mod))
-                                else:
-                                        mod = str(mod)
-                                        print(stat + ': ' + mod)
-                        print('='*10 + 'end' + '=' *10)
+                print('Список данных персонажей: \n' +"Статы: " + str(characters) + "\nМодификатор" + str(modificator))
+
 def saved_inf():
         """записывает созданные характеристики в список
         записывает как и характеристики так и модифакторы
         в список. т е создается список, элементы которого словари."""
         characters.append(character.copy())
-
+        characters.append(modificator.copy())
         """for charact in character:
                 charact = input('введите имя персонажа:')"""
+
 def mds():
         termclean()
         #функция вычисления модификатора характеристики
@@ -45,24 +32,38 @@ def mds():
                 return
                 
         print('='*10 + 'Mods' + '=' *10)
-        for stat, mod in character.items():
+        for stat, mod in modificator.items():
                 mod = math.floor((character[stat] - 10)/2)
                 if mod >=  0:
                         mod = '+' + str(mod)
+                        modificator[stat] = mod
                         print(stat + ': ' + str(mod))
                 else:
                         mod = str(mod)
+                        modificator[stat] = mod
                         print(stat + ': ' + mod)
+        while modif_work:
+                user_agree = input('Вы хотите сохранить результат?\n').lower().strip()
+                if user_agree == "да" or user_agree == 'yes':
+                        saved_inf()
+                        break
+                elif user_agree =='нет' or user_agree == 'no':
+                        print('повторите генерацию')
+                        break
+                else:
+                        print('выполнен не корректный ввод данных.\n Повторите ввод')
+
 def stts():
         termclean()
 #генерация случайных значений для характеристик
         print( '='*10 + 'Stats' + '=' *10)
-        for stat in character:
+        for stat,data in character.items():
                 a = sorted(randint(1,6) for _ in range(4))
-                character[stat] = sum(a[1:])
-                print(stat + ': ' + str(character[stat])) 
+                data = sum(a[1:])
+                character[stat] = data
+                print(stat + ': ' + str(data)) 
 
-        while True:
+        while stts_work:
                 user_agree = input('Вы хотите сохранить результат?\n').lower().strip()
                 if user_agree == "да" or user_agree == 'yes':
                         saved_inf()
@@ -72,6 +73,7 @@ def stts():
                         break
                 else:
                         print('выполнен не корректный ввод данных.\n Повторите ввод')               
+
 def termclean():
         """функция очистки экрана терминала"""
         if os.name=='nt':
@@ -80,12 +82,14 @@ def termclean():
                 subprocess.call('clear', shell = True)
 
 stats = ['str','dex','const','int','wisd','char']
-"""modificator = dict.fromkeys(stats)"""
+modificator = dict.fromkeys(stats)
 character = dict.fromkeys(stats)
 inp = ''
 user_agree = ''
 program_work = True #общая работа прогармы
-characters = [] #работа подпрограмы со стстаи
+characters = []
+stts_work = True #работа подпрограмы со стстаи
+modif_work = True #работа подпрограммы модификаторов
 
 
 msg = '\nдля выхода из программы введите "выход"'
