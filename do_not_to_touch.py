@@ -87,11 +87,11 @@ def stts():
         character[stat] = sum(a_dice[1:])
         print(stat + ': ' + str(character[stat]))
     while True:
-        user_agree = input('Сохранить результат?\n').lower().strip()
-        if user_agree == "да" or user_agree == 'yes':
+        USER_AGREE = input('Сохранить результат?\n').lower().strip() # исправить ошибку стиоя
+        if USER_AGREE == "да" or USER_AGREE == 'yes':
             saved_inf()
             break
-        elif user_agree == 'нет' or user_agree == 'no':
+        elif USER_AGREE == 'нет' or USER_AGREE == 'no':
             print('повторите генерацию характеристик')
             break
         else:

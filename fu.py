@@ -12,11 +12,19 @@ predistor = {'предистория1': 'описание 1',
              'предистория11': 'описание 11',
              'предистория12': 'описание 12',
              'предистория13': 'описание 13'}
-
-ACTIVE = True
-while ACTIVE:
+CREATE_PERS = True
+USER_AGREE = ''
+msg_ch_predist = ''
+while True:
     print('=' * 15 + 'создание персонажа' + '=' * 15)
     print('=' * 15 + 'выбор предистории ' + '=' * 15)
-    for k, v in predistor.items():
-        print(k)
-        ACTIVE = False
+    USER_AGREE = 1 # прописать функции ввода соглшанеия на операцию + написать программу с
+    # мены предистории
+    while CREATE_PERS:
+        for k, v in predistor.items():
+            print(k)
+            CREATE_PERS = False
+        chose = input('Выберите предисторию\n')
+        for k, v in predistor.items():
+            if chose == k:
+                print(f'Ваша предистория:\n{k} \n{v}')
