@@ -30,10 +30,10 @@ def show_stats_all():
         print('список персонажей: ')
         for idx, char_data in enumerate(characters, 1):
             print('\nперсонаж ' + str(idx))
-            print('=' * 29 + 'Stats' + '=' * 35)
+            print('=' * 29 + 'Характеристики' + '=' * 35)
             print(char_data)
             print('='*68)
-            print('=' * 10 + 'mods' + '=' * 10)
+            print('=' * 10 + 'Модификатор' + '=' * 10)
             for stat, value in char_data.items():
                 mod = math.floor((value - 10)/2)
                 if mod >= 0:
@@ -42,10 +42,10 @@ def show_stats_all():
                 else:
                     mod = str(mod)
                     print(stat + ': ' + mod)
-            print('=' * 10 + 'end' + '=' * 11)
+            print('=' * 10 + 'Конец' + '=' * 11)
 
 
-def saved_inf():
+def saved_inf_char():
     """записывает созданные характеристики в список
         записывает как и характеристики так и модифакторы
         в список. т е создается список, элементы которого словари."""
@@ -87,11 +87,12 @@ def stts():
         character[stat] = sum(a_dice[1:])
         print(stat + ': ' + str(character[stat]))
     while True:
-        USER_AGREE = input('Сохранить результат?\n').lower().strip() # исправить ошибку стиоя
-        if USER_AGREE == "да" or USER_AGREE == 'yes':
-            saved_inf()
+        user_agree = input('Сохранить результат?\n').lower().strip()
+        # исправить ошибку стиля в строке 90
+        if user_agree == "да" or user_agree == 'yes':
+            saved_inf_char()
             break
-        elif USER_AGREE == 'нет' or USER_AGREE == 'no':
+        elif user_agree == 'нет' or user_agree == 'no':
             print('повторите генерацию характеристик')
             break
         else:
@@ -110,22 +111,22 @@ stats = ['str', 'dex', 'const', 'int', 'wisd', 'char']
 """modificator = dict.fromkeys(stats)"""
 character = dict.fromkeys(stats)
 INP = ''
-USER_AGREE = ''
+"""user_agree = ''"""
 PROGRAM_WORK = True  # общая работа прогармы
 characters: list[dict] = []  # работа подпрограмы со стстаи
-MSG = '\nдля выхода из программы введите "выход"'
-MSG += '\nдля генерации характеристик введите "характеристики"'
-MSG += '\nдля вычисления модификатора введите "мод"'
-MSG += '\nчтобы показать всех персонажей введите show"\n'
-
+MSG = '\nВыберете действие(для выбора введите название пункта)'
+MSG += '\nгенерация характеристик'
+MSG += '\nвычисление модификатора"'
+MSG += '\nпоказать всех персонажей'
+MSG += '\nсоздать персонажа\n'
 
 while PROGRAM_WORK:
     INP = input(MSG).strip().lower()
-    if INP == 'характеристики':
+    if INP == 'генерация характеристик':
         stts()
-    elif INP == 'мод':
+    elif INP == 'вычисление модификатора':
         mds()
-    elif INP == 'show':
+    elif INP == 'показать всех персонажей':
         show_stats_all()
     elif INP == 'выход':
         PROGRAM_WORK = False

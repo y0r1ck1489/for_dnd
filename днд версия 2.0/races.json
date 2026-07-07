@@ -1,0 +1,68 @@
+[
+    {   "number":"1",
+        "name": "elf",
+        "description": "Elves are a magical people possessed of\n unearthly grace, living in the world but not of it. \nThey dwell in places filled with an airy body, in the depths of ancient forests or in silver abodes crowned with\n glittering spires and shimmering with magical light. There, gentle winds carry snatches of quiet melodies and delicate scents. Elves love nature and magic, music and poetry, and all that is beautiful in the world.",
+        "size":"medium",
+        "speed":30,
+        "traits_elves":{
+            "increase_char": {"dex":2},
+            "years_old":"up to 750 years",
+            "worldview":"any",
+            "heightened_senses":{
+                "skill":"perception"
+            },
+            "Fairy_Legacy":"You have advantage on saving throws against being charmed, and you can't be magically put to sleep.",
+            "Trans":"Elves don't need sleep. Instead, they immerse themselves in deep meditation, remaining in a semi-conscious state for up to four hours a day (this meditation is usually called a trance). During this meditation, you can dream about various things. Some of these dreams are mental exercises developed over years of training. After such rest, you receive all the benefits a human receives from eight hours of sleep.",
+            "languages":["general", "Elven"]
+           
+        },
+        "subraces":{
+                "forest_elf":{
+                    "description":"As a wood elf, you have heightened senses and intuition, and your swift feet carry you quickly and stealthily through your native forests. This category includes the wild elves of Greyhawk and the Kagonesti of Dragonlance, as well as the races called wood elves of Greyhawk and the Forgotten Realms. In Faerûn, wood elves (also called wild or green elves) are reclusive, distrustful of non-elves. Wood elves' skin is typically copper-colored, sometimes with traces of green. They often have brown or black hair, but sometimes it is blonde or bronze. They have green, brown, or hazel eyes.",
+                    "increase_char": {"wisd":1},
+                    "Mastery_of_Elven_Weapons":"You are proficient with the longsword, shortsword, shortbow, and longbow.",
+                    "speed_bonus":5,
+                    "Wilderness_Camouflage":"You can attempt to hide even if you're only lightly obscured by foliage, heavy rain, snow, fog, or other natural phenomena."
+                },
+                "drow":{
+                    "description":"",
+                    "increase_char":{"cha":1},
+                    "Superior_darkvision": 120,
+                    "Sun_Sensitivity":"You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight if you, the target of your attack, or the item you're studying is in direct sunlight.",
+                    "Drow_Magic":"Starting at 3rd level, you can cast the faerie fire spell using this feature. Starting at 5th level, you can also cast the darkness spell using this feature. After casting one of these spells using this feature, you must finish a long rest before you can cast it again this way. You also know the dancing lights cantrip. Your base ability for these spells is Charisma.",
+                    "Drow_Weapon_Proficiency":"You are proficient with the rapier, shortsword, and hand crossbow."
+                }
+            }
+        
+    },
+    {   "number":"2",
+        "name": "dwarf",
+        "description": "Полные древнего величия королевства и вырезанные в толще гор чертоги, удары кирок и молотков, раздающиеся в глубоких шахтах и пылающий кузнечный горн, верность клану и традициям и пылающая ненависть к гоблинам и оркам — вот вещи, объединяющие всех дварфов.",
+        "size":"medium",
+        "speed":25,
+        "traits_dwarven":{
+            "increase_char": {"const":2},
+            "years_old":"up to 350 years",
+            "worldview":"any",
+            "darkvision": 60,
+            "Dwarven Resilience":"You have advantage on saving throws against poison, and you gain resistance to poison damage.",
+            "Dwarven Combat Training":"You are proficient with the battleaxe, handaxe, light hammer, and warhammer.",
+            "Tool Proficiency.":["blacksmith tools.", "brewer tools.", "mason tools."],
+            "languages":["general", "dwarven"],
+            "Stoneknowing":"When you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check instead of your normal proficiency bonus."
+        },
+        "subraces":{
+                "mountain_dwarven":{
+                    "description":"Полные древнего величия королевства и вырезанные в толще гор чертоги, удары кирок и молотков, раздающиеся в глубоких шахтах и пылающий кузнечный горн, верность клану и традициям и пылающая ненависть к гоблинам и оркам — вот вещи, объединяющие всех дварфов..",
+                    "increase_strg": {"strg":2},
+                    "Dwarven Armor Proficiency":"You have proficiency with light and medium armor."
+                },
+                "cholmovoy":{
+                    "description":"Полные древнего величия королевства и вырезанные в толще гор чертоги, удары кирок и молотков, раздающиеся в глубоких шахтах и пылающий кузнечный горн, верность клану и традициям и пылающая ненависть к гоблинам и оркам — вот вещи, объединяющие всех дварфов.",
+                    "increase_wisd":{"wisd":1},
+                    "Дварфийская выдержка":"Максимальное значение ваших хитов увеличивается на 1, и вы получаете 1 дополнительный хит с каждым новым уровнем."}
+            }
+        
+    }
+
+]

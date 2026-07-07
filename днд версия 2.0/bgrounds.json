@@ -1,0 +1,19 @@
+[
+  {"number":"1"
+  ,"id":"artist"
+  ,"desc":"You enjoy performing in public. You know how to entertain, charm, and even inspire them. Your poetry can touch listeners' hearts, evoking sorrow or joy, laughter or anger. Your music can inspire or sadden. Your dancing is captivating, and your jokes are always funny. Whatever you do, your life is closely connected to art."
+  ,"skill" : "Acrobatics, Performance"
+  ,"Instrument Proficiency": "Makeup kit, one musical instrument."
+  ,"Equipment": "Musical instrument (your choice), a gift from an admirer (a love letter, a lock of hair, or a trinket), costume, belt pouch containing 15 gp"
+  ,"ABILITY" :{"description" : "You can always find a place to perform. This is usually a tavern or inn, but it could be a circus, a theater, or even a nobleman's court. At this venue, you receive free lodging and meals of modest or comfortable standards (depending on the quality of the establishment) if you perform every night. Furthermore, your performances make you a local celebrity. When strangers recognize you in the town where you performed, they are more likely to treat you well."}
+  }
+, { "number":"2"
+   ,"id":"Noble" 
+   ,"desc": "You know what wealth, power, and privilege are. You have a noble title, and your family owns land, collects taxes, and wields significant political influence. You could be a pampered aristocrat, unfamiliar with work and hardship, a former merchant newly elevated to a title, or a disinherited scoundrel with an inflated sense of entitlement. Or you could be an honest, hardworking landowner, genuinely caring for and feeling responsible for those who live and toil on your land."
+   ,"skill" :"History, Persuasion."
+   ,"Instrument Proficiency" : "One play set."
+   ,"Equipment" : "A set of fine clothing, a signet ring, a scroll with a family tree, a purse with 25 gp"
+   ,"languages" : "One of your choice"
+   ,"ABILITY" :{"description" : "Thanks to your noble birth, others treat you well. You are accepted in high society, and it is considered your right to visit any place. Commoners go out of their way to please you and avoid your wrath, and other highborn consider you their equal. If necessary, you can gain an audience with a local nobleman."}
+
+}]

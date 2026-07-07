@@ -1,0 +1,35 @@
+[
+    {   "id": "elf",
+        "description": "TEXT",
+        "speed":"30ft",
+        "traits_elves":{
+            "increase_char": {"dex":2},
+            "years_old":"up to 750 years",
+            "worldview":"any",
+            "heightened senses":{
+                "skill":"perception"
+            },
+            "Fairy Legacy":"TEXT",
+            "Trans":"TEXT",
+            "languages":"TEXT",
+            "subraces":{
+                "forest elf":{
+                    "description":"TEXT",
+                    "increase_char": {"wisd":1},
+                    "Mastery of Elven Weapons":"TEXT",
+                    "Swift Feet":"TEXT",
+                    "Wilderness Camouflage":"TEXT"
+                }
+            }
+        }
+    
+    
+    },
+
+{ "character" : {"name":"character_name"
+                ,"background" : "takoyto"
+                ,"class" : "yopta"
+                ,"race" : "elf"
+                ,"level" : "exp"
+                ,"mirovozz" : "xz"
+                ,"invent" : "character_invent"}}]

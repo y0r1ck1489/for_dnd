@@ -40,24 +40,33 @@ character: dict[str, str | None] = {'name': None,
                                     'rase': None,
                                     'predistor': None}
 
+CH_MSG = "что вы хотите сделать?\n"
+CH_MSG += "Выбрать имя\n"
+CH_MSG += "Выбрать расу\n"
+CH_MSG += "Выбрать класс\n"
+CH_MSG += "Выбрать предимторию\n"
+CH_MSG += "Для смена режима редактирования введите соответсвующее действие\n"
+CH_MSG += "Для завершения введите X или выйти\n"
 # код для создания персонажа а именно заполнения имени
 # написать код выбора этапа например 1 пункт выбор имени и тд
-while True:
-    print('=' * 15 + 'создание персонажа' + '=' * 15)
-    print('=' * 48)
-    print('Для выхода напишите "выход"')
-    print('для отмены действия введится "X"')
+"""while True:"""
+    # добавление функции отчистки экрана 48
+print('=' * 15 + 'Создание персонажа' + '=' * 15)
+print('=' * 18 + 'Выбор имени' + '=' * 18)
+print('Для выхода напишите "выход"')
     # выбор имени персонажа
+while True:
     NAME = str(input('выберите имя персонажа:\n'))
     AGREE = input('вам нравится имя?\n').lower().strip()
     if AGREE == 'да' or AGREE == 'yes':
         for k, v in character.items():
             character['name'] = NAME
-            print(f"ваше имя {character['name']}")
+            """print(character)"""  # отображение всего словаря
+            print(f"ваше имя: {character['name']}")
             break
     elif AGREE == 'нет' or AGREE == 'no':
         print('повторите ввод имени')
-    elif AGREE == 'X':
+    elif AGREE == 'X' or AGREE == 'выйти':
         break
     else:
         print('выполнен не корректный ввод.\n Повторите подтверждение.')
