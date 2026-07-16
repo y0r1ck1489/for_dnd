@@ -1,6 +1,6 @@
 [
-    {   "number":"1",
-        "name": "elf",
+    {   "number":"1", 
+        "rname": "elf",
         "description": "Elves are a magical people possessed of\n unearthly grace, living in the world but not of it. \nThey dwell in places filled with an airy body, in the depths of ancient forests or in silver abodes crowned with\n glittering spires and shimmering with magical light. There, gentle winds carry snatches of quiet melodies and delicate scents. Elves love nature and magic, music and poetry, and all that is beautiful in the world.",
         "size":"medium",
         "speed":30,
@@ -36,7 +36,7 @@
         
     },
     {   "number":"2",
-        "name": "dwarf",
+        "rname": "dwarf",
         "description": "Полные древнего величия королевства и вырезанные в толще гор чертоги, удары кирок и молотков, раздающиеся в глубоких шахтах и пылающий кузнечный горн, верность клану и традициям и пылающая ненависть к гоблинам и оркам — вот вещи, объединяющие всех дварфов.",
         "size":"medium",
         "speed":25,
