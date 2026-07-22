@@ -1,6 +1,17 @@
-print("вы в меню создания персонажа.\n пожалуйста выберите действие")
+"""print("вы в меню создания персонажа.\n пожалуйста выберите действие")
 action = ["сгенирировать характеристики", "выбрать имя",
           "выбрать расу и подрасу", "выбрать класс(реализовать в будущем)",
           "выбрать предисторию", "осмотреть инвентарь"]
 for index, item in enumerate(action, start=1):
     print(str(index) + str(item))
+"""
+from random import randint
+
+
+def generator_status():
+    """функция генерации характеристик персонажа"""
+    massiv = sorted(randint(1, 6) for _ in range(4))
+    print(massiv)
+
+
+generator_status()
