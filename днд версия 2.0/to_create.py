@@ -31,7 +31,7 @@ def main():
                  'wis': '',
                  'char': ''}
         while True:
-            for key in stats.keys():
+            for key in stats:
                 dice = sorted(randint(1, 6) for _ in range(4))
                 result = sum(dice[1:])
                 stats[key] = result
@@ -130,6 +130,7 @@ def main():
     def choose_name():
         """выбор имени персонажа"""
         while True:
+            termclean()
             confirmed = False
             name = input("Enter character's  name:")
             print("Name your character: " + name + "?")
@@ -146,6 +147,19 @@ def main():
                         print("please confirm your choice. 'yes' or 'no'")
             if confirmed:
                 break
+
+    def saved_character():
+        """сохранение персонажа"""
+        filename = "savedCHAR.json"
+        try:
+            with open(filename, "r", encoding="utf-8") as f:
+                characters = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            characters = []
+        characters.append(character)
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(character, f, ensure_ascii=False, indent=4)
+            print("Персонаж сохранен в " + {filename})
 
     # в теории тут должен быть класс с описанными в нем действиями
     # данный блок отвечает за подгрузку json файлов
@@ -188,11 +202,11 @@ def main():
               "выбрать расу и подрасу", "выбрать класс(реализовать в будущем)",
               "выбрать предисторию", "осмотреть инвентарь", "сохранить"]
     while True:
+        termclean()
         print("вы в меню создания персонажа.\n пожалуйста выберите действие")
         for index, item in enumerate(action):
             print(str(index) + ". " + str(item.title()))
         choosen_act = str(input("yours chose:"))
-        termclean()
         match choosen_act:
             case "0":
                 print("ВЫХОДИМ...")
@@ -211,6 +225,8 @@ def main():
                 print("ЗАГЛУШКА")
             case "7":
                 print("ЗАГЛУШКА")
+            case "8":
+                saved_character()
             case _:
                 print("повторите ввод")
 
