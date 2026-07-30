@@ -16,15 +16,13 @@ def main():
     """основная программа"""
     while True:
         termclean()
-        text = '=' * 10 + 'WELCOME TO CHARACTERMAKER' + '=' * 10
+        text = '=' * 10 + 'CHARACTERMAKER' + '=' * 10
         print(text)
-        print("SELECT YOURE ACTION:")
-        print("(enter number)")
-        placeholder = "\n1. Create Character \n2. Delete Character\
-             \n3. Updater"\
-            "Character \n4. Exit\n"
+        print("ВЫБЕРИТЕ ДЕЙСТВИЕ: \n(введите номер действия)")
+        placeholder = "\n1. Создать персонажа  \n2. Удалить персонажа\
+             \n3. Изменить персонажа \n4. выйти\n"
         print(placeholder)
-        choose = input("yours chose:\n").strip()
+        choose = input("Ваш выбор:\n").strip()
 
         match choose:
             case "1":
@@ -38,7 +36,7 @@ def main():
                 print("ЗАГЛУШКА ДЛЯ СТРАНИЦЫ ОБНОВЛЕНИЯ")
             case "4":
                 # """ЗАПУСК ФУНКЦИИ СОХРАНЕНИЯ И ВЫХОДА"""
-                print("ПОШЕЛ НАХУЙ(прописать штуку записи и сохранения инфы)")
+                print("ПОШЕЛ НАХУЙ")
                 break
 
 

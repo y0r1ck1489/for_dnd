@@ -12,6 +12,7 @@ class CharCreator:
         self.character = {
             "name": "",
             "race": "",
+            "subrace": "",
             "background": "",
             "inventory": "",
             "stats": {
@@ -22,6 +23,15 @@ class CharCreator:
                 "wis": 0,
                 "char": 0
             },
+            "mods": {
+                "mstr": 0,
+                "mdex": 0,
+                "mconst": 0,
+                "mint": 0,
+                "mwis": 0,
+                "mchar": 0
+
+            }
         }
 
         self.races_info = []
@@ -67,43 +77,45 @@ class CharCreator:
                  'int': 0,
                  'wis': 0,
                  'char': 0}
+
         while True:
             for key in stats:
                 dice = sorted(randint(1, 6) for _ in range(4))
                 result = sum(dice[1:])
                 stats[key] = result
                 print(f"{key}:{result} (выпало {dice})")
-                txt = "Введите 'прекратить генерацию' чтобы завершить  "
-                txt += "или 'продолжить генерацию' чтобы продожить "
-                while True:
-                    answer = str(input(txt).lower())
-                    match answer:
-                        case "прекратить генерацию":
-                            self.character["stats"] = stats
-                            return
-                        case "продолжить генерацию":
-                            break
-                        case _:
-                            print("неверный ввод")
+            txt = "Введите '0' чтобы завершить генерацию "
+            txt += "или '1' чтобы продожить "
+            while True:
+                answer = str(input(txt).lower())
+                match answer:
+                    case "0":
+                        self.character["stats"] = stats
+                        return
+                    case "1":
+                        break
+                    case _:
+                        print("неверный ввод")
 
     def choose_name(self):
         """Выбор имени"""
         self.termclean()
         while True:
             confirmed = False
-            name = input("Enter character's  name:").strip()
-            print("Name your character: " + name + "?")
+            name = input("Введите имя персонажа\n").strip()
+            print("Имя Вашего персонажа: " + name + "?")
             while True:
-                answer = input("Do you agree with the name?").lower()
+                answer = input("Вам нравится имя?\n").lower()
                 match answer:
-                    case "no":
+                    case "no" | "нет":
                         break
-                    case "yes":
+                    case "yes" | "да":
                         self.character["name"] = name
                         confirmed = True
                         break
                     case _:
-                        print("please confirm your choice. 'yes' or 'no'")
+                        print("Пожалуйста завершите выбор имени. \n Введите \
+                    'yes/да' или 'no/нет'")
             if confirmed:
                 break
 
@@ -114,28 +126,67 @@ class CharCreator:
             self.termclean()
             for race in self.races_info:
                 print(race["number"] + ". " + race["rname"])
-            number = input("Enter number of character's race:").strip()
+            number = input("Введите номер расы персонажа:\n").strip()
             if number not in race_by_number:
                 print("нет такой расы повторите снова ввод")
                 input("Нажмите Enter для продолжения...")
                 continue
             chosen_race = race_by_number[number]
-            print("Race your character: " + chosen_race["rname"] + "?")
+            print("Раса Вашего персонажа: " + chosen_race["rname"] + "?")
             confirmed = False
             while True:
-                answer = str(input("Do you agree with the race?").lower())
+                answer = str(input("Вы согласны с расой?\n").lower())
                 match answer:
-                    case "no":
+                    case "no" | "нет":
                         break
-                    case "yes":
+                    case "yes" | "да":
                         self.character["race"] = chosen_race["rname"]
+                        self._choose_subrace(chosen_race)
                         confirmed = True
                         break
                     case _:
-                        print("please confirm your choice. 'yes' or 'no'")
+                        print("Пожалуйста завершите выбор расы. \n Введите \
+                    'yes/да' или 'no/нет'")
             if confirmed:
                 print("Раса персонажа: " + self.character["race"])
                 break
+
+    def _choose_subrace(self, race):
+        """выбор подрасы"""
+        if "subraces" not in race:
+            self.character["subrace"] = ""
+            return
+
+        subraces = race["subraces"]
+        subrace_keys = list(subraces.keys())
+        while True:
+            self.termclean()
+            print(f"Выберите подрасу для расы {race['rname']}:")
+            for i, key in enumerate(subrace_keys, 1):
+                desc = subraces[key].get("description", "Нет описания")
+                short_desc = (desc[: 80] + "...") if len(desc) > 80 else desc
+                print(f"{i}. {key.replace('_', ' ').title()} - {short_desc}")
+            print("0. Без подрасы")
+
+            choice = input("Ваш выбор").strip()
+            if not choice.isdigit() or int(choice) not in range(0, len(subrace_keys) + 1):
+                print("Неверный ввод. Повторите ввод.")
+                input("Введите enter")
+                continue
+            idx = int(choice)
+            if idx == 0:
+                self.character["subrace"] = ""
+                break
+            else:
+                chosen_key = subrace_keys[idx - 1]
+                print(f"Выбрана подраса: {chosen_key.replace('_', ' ').title()}")
+                confirm = input("Вы согласны с подрасой?").lower()
+                match confirm:
+                    case "да" | "yes":
+                        self.character["subrace"] = chosen_key
+                        break
+                    case "нет" | "no":
+                        pass
 
     def choose_background(self):
         """выбор предистории из списка"""
@@ -144,28 +195,29 @@ class CharCreator:
             self.termclean()
             for bg in self.bg_info:
                 print(bg["number"] + ". " + bg["id"])
-            number = input("Enter character's  bg:").strip()
+            number = input("Введите номер предистории:\n").strip()
             if number not in bg_by_number:
                 print("нет такой предистории повторите выбор")
                 input("Нажмите Enter для продолжения...")
                 continue
 
             choosen_bg = bg_by_number[number]
-            print("ПРЕДИСТОРИЯ your character: " + choosen_bg["id"] + "?")
+            print("Предистория вашего персонажа: " + choosen_bg["id"] + "?")
             confirmed = False
             while True:
-                answer = input("Do you agree with the bg?").lower()
+                answer = input("Вы согласны с выбором?\n").lower()
                 match answer:
-                    case "no":
+                    case "no" | "нет":
                         break
-                    case "yes":
+                    case "yes" | "да":
                         self.character["background"] = choosen_bg["id"]
                         confirmed = True
                         break
                     case _:
-                        print("please confirm your choice. 'yes' or 'no'")
+                        print("Пожалуйста завершите выбор предистории. \n \
+                        Введите 'yes/да' или 'no/нет'")
             if confirmed:
-                print("ваша предисория: " + self.character["background"] + "?")
+                print("Ваша предисория: " + self.character["background"] + "?")
                 break
 
     def save_character(self):
@@ -174,6 +226,8 @@ class CharCreator:
         try:
             with open(filename, "r", encoding="utf-8",) as f:
                 character_list = json.load(f)
+                if not isinstance(character_list, list):
+                    character_list =[]
         except (FileNotFoundError, json.JSONDecodeError):
             character_list = []
         character_list.append(self.character)
@@ -186,8 +240,10 @@ class CharCreator:
         actions = [("Выход", None),
                    ("Сгенерировать характеристики", self.generator_status),
                    ("Выбрать имя", self.choose_name),
-                   ("Выбрать расу", self.choose_race),
+                   ("Выбрать расу и подрасу(доделать)", self.choose_race),
+                   ("Сложить расовые бонусы", lambda: print("Заглушка")),
                    ("Выбрать класс(пока нет)", lambda: print("Заглушка")),
+                   ("Вычислить модификаторы", lambda: print("Заглушка")),
                    ("Выбрать предисторию", self.choose_background),
                    ("Осмотреть инвентарь", lambda: print("Заглушка")),
                    ("Сохранить персонажа", self.save_character),]

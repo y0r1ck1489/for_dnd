@@ -56,25 +56,25 @@ def main():
         while True:
             termclean()
             show_race()
-            number = input("Enter number of character's race:").strip()
+            number = input("Введите номер расы:").strip()
             if number not in race_by_number:
                 print("нет такой расы повторите снова ввод")
                 input("Нажмите Enter для продолжения...")
                 continue
             chosen_race = race_by_number[number]
-            print("Race your character: " + chosen_race["rname"] + "?")
+            print("Раса вашего персонажа: " + chosen_race["rname"] + "?")
             confirmed = False
             while True:
-                answer = str(input("Do you agree with the race?").lower())
+                answer = str(input("Вы уверены в своем выборе?").lower())
                 match answer:
-                    case "no":
+                    case "no" | "нет":
                         break
-                    case "yes":
+                    case "yes" | "да":
                         character["CHrace"] = chosen_race["rname"]
                         confirmed = True
                         break
                     case _:
-                        print("please confirm your choice. 'yes' or 'no'")
+                        print("Пожалуйста введите 'да' или 'нет'")
             if confirmed:
                 print("Раса персонажа: " + character["CHrace"])
                 break
@@ -206,7 +206,7 @@ def main():
         print("вы в меню создания персонажа.\n пожалуйста выберите действие")
         for index, item in enumerate(action):
             print(str(index) + ". " + str(item.title()))
-        choosen_act = str(input("yours chose:"))
+        choosen_act = str(input("Ваш выбор:"))
         match choosen_act:
             case "0":
                 print("ВЫХОДИМ...")

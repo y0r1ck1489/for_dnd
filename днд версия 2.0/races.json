@@ -4,7 +4,7 @@
         "description": "Elves are a magical people possessed of\n unearthly grace, living in the world but not of it. \nThey dwell in places filled with an airy body, in the depths of ancient forests or in silver abodes crowned with\n glittering spires and shimmering with magical light. There, gentle winds carry snatches of quiet melodies and delicate scents. Elves love nature and magic, music and poetry, and all that is beautiful in the world.",
         "size":"medium",
         "speed":30,
-        "traits_elves":{
+            "traits":{
             "increase_char": {"dex":2},
             "years_old":"up to 750 years",
             "worldview":"any",
@@ -26,7 +26,7 @@
                 },
                 "drow":{
                     "description":"",
-                    "increase_char":{"cha":1},
+                    "increase_char":{"char":1},
                     "Superior_darkvision": 120,
                     "Sun_Sensitivity":"You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight if you, the target of your attack, or the item you're studying is in direct sunlight.",
                     "Drow_Magic":"Starting at 3rd level, you can cast the faerie fire spell using this feature. Starting at 5th level, you can also cast the darkness spell using this feature. After casting one of these spells using this feature, you must finish a long rest before you can cast it again this way. You also know the dancing lights cantrip. Your base ability for these spells is Charisma.",
@@ -40,7 +40,7 @@
         "description": "Полные древнего величия королевства и вырезанные в толще гор чертоги, удары кирок и молотков, раздающиеся в глубоких шахтах и пылающий кузнечный горн, верность клану и традициям и пылающая ненависть к гоблинам и оркам — вот вещи, объединяющие всех дварфов.",
         "size":"medium",
         "speed":25,
-        "traits_dwarven":{
+        "traits":{
             "increase_char": {"const":2},
             "years_old":"up to 350 years",
             "worldview":"any",
@@ -54,7 +54,7 @@
         "subraces":{
                 "mountain_dwarven":{
                     "description":"Полные древнего величия королевства и вырезанные в толще гор чертоги, удары кирок и молотков, раздающиеся в глубоких шахтах и пылающий кузнечный горн, верность клану и традициям и пылающая ненависть к гоблинам и оркам — вот вещи, объединяющие всех дварфов..",
-                    "increase_strg": {"strg":2},
+                    "increase_strg": {"str":2},
                     "Dwarven Armor Proficiency":"You have proficiency with light and medium armor."
                 },
                 "cholmovoy":{
