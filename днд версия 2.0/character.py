@@ -222,7 +222,8 @@ class CharCreator:
 
     def save_character(self):
         """Сохранение персонажа"""
-        filename = "character.json"
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        filename = os.path.join(base_dir, "character.json")
         try:
             with open(filename, "r", encoding="utf-8",) as f:
                 character_list = json.load(f)
