@@ -3,7 +3,7 @@
 данных персонажа"""
 
 
-class Character:
+class Character: # переделать
     """класс который создает словарь инфы  персонажа"""
 
     def __init__(self, character_name, player_name, level,

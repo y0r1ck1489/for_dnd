@@ -1,24 +1,25 @@
-"""ЗАПУСК ВСЕЙ ПРОГРАММЫ ЧЕРЕЗ ТЕРМИНАЛ"""
+"""ЗАПУСК ВСЕЙ ПРОГРАММЫ ЧЕРЕЗ ТЕРМИНАЛ или главный обработчик"""
+import creator_page
+import common_fucntion as cf
 
 
 def run_program():
     """запуск программы"""
     while True:
-        uzor = "=" * 10
-        title = "CHARACTER MAKER"
-        header = f"{uzor} {title} {uzor}"
-        print(header)
+        cf.clean_screen()  # общая функция
+        cf.header()  # общая функция
         print("Выберите действие: \n(введите номер действия) ")
         items = ["создать персонажа",
                  "удалить персонажа",
                  "изменить персонажа",
                  "выйти из программы"]
-        for i, choose in enumerate(items, start=1):
-            print(f"{i}.{choose.capitalize()}")
+        cf.user_chose(items)  # обшая  функция
         user_choose = input("Ваш выбор: ").strip()
         match user_choose:
             case "1":
                 print("заглушка один")
+                creator_page.run_character_maker()  # вызов меню создания
+            # персонажа
             case "2":
                 print("заглушка два")
             case "3":
