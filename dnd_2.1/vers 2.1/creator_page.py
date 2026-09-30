@@ -20,7 +20,7 @@ def run_character_maker():
     """запуск страницы создания персонажа"""
     # путь к файлам где будут распаолагаться как информация
     # для создания так и уже созданные персонажи
-    way_to_dir = os.path.dirname(os.path.abspath(__file__))
+    way_to_dir = os.path.dirname(os.path.abspath(__file__)) # не нравится функция. пересмотреть. прописать относительный путь ТУПО ДЛЯ ПОНИМАНИЯ
     races_inf = sf.read_n_load_info(os.path.join(way_to_dir, "races.json"))
     bground_inf = sf.read_n_load_info(os.path.join(way_to_dir, "bground.json"))
     while True:

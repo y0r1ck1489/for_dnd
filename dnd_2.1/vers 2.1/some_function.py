@@ -4,37 +4,11 @@ from random import randint
 import common_fucntion as cf
 
 
-# сохранение персонажа
-def save_character(character):
-    """сохранение персонажа"""
-    filename = "saved_characters.json"
-    try:
-        with open(filename, "r", encoding="utf-8") as file:
-            characters = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        characters = []
-    characters.append(character)
-    with open(filename, "w", encoding="utf-8") as file:
-        json.dump(character, file, ensure_ascii=False, indent=4)
-        print(f"Герой сохранен в {filename}")
-
-
-# чтение файла
-def read_n_load_info(way_to_dir):
-    """функция ищет путь для подгрузки всех данных"""
-    try:
-        with open(way_to_dir, "r", encoding="utf-8") as file:
-            return json.load(file)
-    except FileNotFoundError:
-        print("Файл не найден")
-        return None
-    except json.JSONDecodeError:
-        print("Файл поврежден")
-        return None
+ # хз хуйня какаято
 
 
 # функция ввода имени игрока
-def name_entry(default=" "):
+def name_entry(default=" "): # внести в бесконечный цикл
     """функция которая принимает значение имени игрока
     персонаж может быть без владельца, иными словами черновик"""
     text_message = "Введите имя игрока:\n"
@@ -46,10 +20,10 @@ def name_entry(default=" "):
 
 
 # функция ввода имени персонажа
-def character_name_entry(default=""):
+def character_name_entry(default=""): # внести в бесконечный цикл
     """функция которая принимает имя персонажа
     может быть пустым, чтобы можно было придумать позже(хз как такое
-    можно реализовать)"""
+    можно реализовать)""" 
     text_message = "Введите имя персонажа\n"
     character_name = input(text_message).strip()  # добавить в цикл
     if character_name:
