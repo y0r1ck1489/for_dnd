@@ -1,5 +1,5 @@
 """ЗАПУСК ВСЕЙ ПРОГРАММЫ ЧЕРЕЗ ТЕРМИНАЛ или главный обработчик"""
-import creator_page
+import creator_page as cp
 import common_fucntion as cf
 
 
@@ -17,8 +17,7 @@ def run_program():
         user_choose = input("Ваш выбор: ").strip()
         match user_choose:
             case "1":
-                print("заглушка один")
-                creator_page.run_character_maker()  # вызов меню создания
+                cp.run_character_maker()  # вызов меню создания
             # персонажа
             case "2":
                 print("заглушка два")
@@ -28,7 +27,7 @@ def run_program():
                 print("Выходим...\n :)")
                 break
             case _:
-                print("Нет такого варианта")
+                print("Нет такого варианта, пожалуйста повторите ввод")
 
 
 if __name__ == "__main__":

@@ -2,11 +2,14 @@
 здесь располоджены функции для создания персонажа
 при создании берет объект самого персонажа из
 соответствущего файла.
-ожидаемый результат - успещная сериализация данных в json файл"""
-import json  # мб это тут нах не нужно пересмотреть
-import os
-import some_function as sf
-import common_fucntion as cf
+ожидаемый результат - успещная сериализация данных в json файл
+
+НАВОДИМ ПОРЯДОК В ЭТОЙ ПАРАШЕ"""
+
+# мб это тут нах не нужно пересмотреть
+import create_fucntion as createFunc
+import common_fucntion as commonFunc
+from character_class import Character as Chara
 
 # условно тут будет какая нить функция запуска всей программы
 # которяа будет иметь переменную с путем к папке.
@@ -20,39 +23,48 @@ def run_character_maker():
     """запуск страницы создания персонажа"""
     # путь к файлам где будут распаолагаться как информация
     # для создания так и уже созданные персонажи
-    way_to_dir = os.path.dirname(os.path.abspath(__file__)) # не нравится функция. пересмотреть. прописать относительный путь ТУПО ДЛЯ ПОНИМАНИЯ
-    races_inf = sf.read_n_load_info(os.path.join(way_to_dir, "races.json"))
-    bground_inf = sf.read_n_load_info(os.path.join(way_to_dir, "bground.json"))
+    any_hero = Chara()
     while True:
-        cf.clean_screen()
-        cf.header()
+        commonFunc.clean_screen()
+        commonFunc.header()
         actions = ["выход",  # 1
                    "сгенерировать характеристики",  # 2
-                   "выбрать имя персонажу",  # 3
-                   "выбрать расу и подрасу",  # 4
-                   "выбрать класс",  # 5
-                   "выбрать подкласс",  # 6
-                   "выбрать предисторию",  # 7
-                   "осмотреть инвентарь",  # 8
-                   "сохранить данные",  # 9
-                   "сбросить"]  # 10
-        cf.user_chose(actions)
+                   "вписать имя игрока",  # 3
+                   "выбрать имя персонажу",  # 4
+                   "выбрать расу и подрасу",  # 5
+                   "выбрать класс",  # 6
+                   "выбрать подкласс",  # 7
+                   "выбрать предисторию",  # 8
+                   "осмотреть инвентарь",  # 9
+                   "сохранить данные",  # 10
+                   "сбросить"]  # 11
+        commonFunc.user_chose(actions)
         user_choose = input("Ваш выбор: ").strip()
         match user_choose:
             case "1":
                 break
             case "2":
-                sf.generation_of_characteristics()
-                print("заглушка")
+                any_hero.stats = createFunc.generation_of_characteristics()
+                # по идее правильно работает
             case "3":
-                print("заглушка")
+                # имя игрока
+                any_hero.player_name = createFunc.player_name_entry()
             case "4":
+                # имя персонажа
+                any_hero.character_name = createFunc.character_name_entry()
                 print("заглушка")
             case "5":
+                createFunc.choose_race()  # выбор расы
                 print("заглушка")
             case "6":
                 print("заглушка")
             case "7":
                 print("заглушка")
             case "8":
+                print("заглушка")
+            case "9":
+                print("заглушка")
+            case "10":  # сохранение текущей информации в словарь
+                print("заглушка")
+            case "11":  # сброс данных к текущему словарю
                 print("заглушка")
