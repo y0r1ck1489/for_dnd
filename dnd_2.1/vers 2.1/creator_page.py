@@ -6,23 +6,14 @@
 
 НАВОДИМ ПОРЯДОК В ЭТОЙ ПАРАШЕ"""
 
-# мб это тут нах не нужно пересмотреть
 import create_fucntion as createFunc
 import common_fucntion as commonFunc
 from character_class import Character as Chara
-
-# условно тут будет какая нить функция запуска всей программы
-# которяа будет иметь переменную с путем к папке.
-# тут будет присутсововать функция которая (хз забыл)
+import using_json_files as ujs
 
 
-# крч надо вынести в charactermaker путь к файлам
-# нахуя обработчику событий блять расположение к джсону ну максимум бля
-# сохранение файлов
 def run_character_maker():
     """запуск страницы создания персонажа"""
-    # путь к файлам где будут распаолагаться как информация
-    # для создания так и уже созданные персонажи
     any_hero = Chara()
     while True:
         commonFunc.clean_screen()
@@ -52,10 +43,8 @@ def run_character_maker():
             case "4":
                 # имя персонажа
                 any_hero.character_name = createFunc.character_name_entry()
-                print("заглушка")
             case "5":
                 createFunc.choose_race()  # выбор расы
-                print("заглушка")
             case "6":
                 print("заглушка")
             case "7":
@@ -65,6 +54,6 @@ def run_character_maker():
             case "9":
                 print("заглушка")
             case "10":  # сохранение текущей информации в словарь
-                print("заглушка")
+                ujs.save_character(any_hero.character_info())
             case "11":  # сброс данных к текущему словарю
                 print("заглушка")
